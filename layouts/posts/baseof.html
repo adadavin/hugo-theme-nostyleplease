@@ -8,6 +8,8 @@
             </div>
         </main>
     </body>
+    {{- partial "tilde_webring.html" -}}
+    {{ partial "counter.html" }}
     {{- if .Params.custom_js -}}
         {{- range .Params.custom_js -}}
             {{ $js := resources.Get (print "js/" . ".js") }}

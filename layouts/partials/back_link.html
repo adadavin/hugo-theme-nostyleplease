@@ -1,1 +1,3 @@
-<a href="{{ "" | relURL }}">{{ $.Site.Params.theme_config.back_home_text }}</a>
+{{- $baseurl := "" -}}
+{{- $baseurl = $.Site.BaseURL -}}
+<a href="{{ $baseurl }}">{{ $.Site.Params.theme_config.back_home_text }}</a>

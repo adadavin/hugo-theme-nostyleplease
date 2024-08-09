@@ -26,11 +26,13 @@
         {{ $posts = (first .limit $posts ) }}
     {{ end }}
     <ul>
-        {{- range $post := $posts -}}
-        <li>
-            <span>{{- ($post.Date | time.Format site.Params.theme_config.date_format) }}</span>
-            <a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a>
-        </li>
+      {{- range $post := $posts -}}
+      {{- if ne $post.Type "exclude_from_posts" }} <!--exclude -->
+            <li>
+                <span>{{- ($post.Date | time.Format site.Params.theme_config.date_format) }}</span>
+                <a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a>
+            </li>
+        {{- end }}
         {{ end }}
         {{- if and .show_more $limit_exceeded }}
             <li><a href="{{ .show_more_url | relURL }}">{{ .show_more_text | default "Show more..." }}</a></li>
